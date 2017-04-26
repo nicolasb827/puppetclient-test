@@ -6,7 +6,7 @@ RUN useradd -g puppet puppet
 RUN rpm -Uvh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
 RUN yum -y install which hostname tar puppet-agent
 ADD start.sh /start.sh
-ADD puppetserver/master.conf /master.conf
+ADD puppetclient/master.conf /master.conf
 
 ENV PATH /opt/puppetlabs/bin/:$PATH
 CMD /start.sh
