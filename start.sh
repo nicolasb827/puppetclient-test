@@ -15,7 +15,7 @@ function initiate_instance {
 cat - > /etc/puppetlabs/puppet/puppet.conf <<EOF
 [main]
 certname = $(hostname)
-server = $(hostname)
+server = puppetmaster
 masterport = 8149
 environment = production
 runinterval = 1h
