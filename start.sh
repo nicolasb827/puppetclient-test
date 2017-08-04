@@ -12,9 +12,7 @@ if [ "" == "$MY_CERT" ]; then
 	MY_CERT=$(hostname --fqdn)
 fi
 
-echo "[client] Starting using"
-echo "[client] - env : $MY_ENV"
-echo "[client] - cert: $MY_CERT"
+echo "[client] Starting using env=$MY_ENV, cert=$MY_CERT"
 
 echo "[client] creating puppet.conf"
 cat - > /etc/puppetlabs/puppet/puppet.conf <<EOF
@@ -74,7 +72,9 @@ EOF
 chmod a+x /usr/local/bin/do_puppet.sh
 
 echo "[client] cleaning any certificates"
-find /etc/puppetlabs/puppet/ssl/ -type f -exec rm -f {} \;
+if [ -d /etc/puppetlabs/puppet/ssl ]; then
+	find /etc/puppetlabs/puppet/ssl/ -type f -exec rm -f {} \;
+fi
 
 echo "[client] ready !"
 while :; do

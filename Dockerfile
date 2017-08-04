@@ -12,7 +12,7 @@ ARG CLIENT_CERT
 RUN groupadd puppet
 RUN useradd -g puppet puppet
 RUN rpm -Uvh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
-RUN yum -y install which hostname tar puppet-agent
+RUN yum -y --nogpgcheck install which hostname tar puppet-agent
 COPY start.sh /start.sh
 COPY puppetclient/master.conf /master.conf
 
